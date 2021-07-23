@@ -61,7 +61,7 @@ pub struct Pre {
     #[serde(flatten)]
     pub text_block: TextBlock,
     /// The programming language of the entity text
-    pub language: String,
+    pub language: Option<String>,
 }
 
 /// A clickable text URL
