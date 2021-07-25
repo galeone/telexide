@@ -82,17 +82,17 @@ impl Stream for UpdatesStream {
                 Poll::Ready(Ok(ref res)) if res.is_empty() => {
                     ref_mut.poll_telegram();
                     return Pin::new(ref_mut).poll_next(cx);
-                },
+                }
                 Poll::Ready(Ok(res)) => {
                     for u in res {
                         ref_mut.offset = max(u.update_id, ref_mut.offset);
                         ref_mut.buffer.push_back(u);
                     }
-                },
+                }
                 Poll::Ready(Err(err)) => {
                     ref_mut.poll_telegram();
                     return Poll::Ready(Some(Err(err)));
-                },
+                }
             };
         } else {
             ref_mut.poll_telegram();

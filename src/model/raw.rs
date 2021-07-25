@@ -2,25 +2,10 @@ use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 
 use super::{
-    message_contents::*,
-    message_entity::*,
-    utils::unix_date_formatting,
-    ChatType,
-    CallbackQuery,
-    ChatLocation,
-    ChatMemberUpdated,
-    ChatPhoto,
-    ChosenInlineResult,
-    Game,
-    InlineKeyboardMarkup,
-    InlineQuery,
-    Invoice,
-    PassportData,
-    PreCheckoutQuery,
-    ShippingQuery,
-    Sticker,
-    SuccessfulPayment,
-    User,
+    message_contents::*, message_entity::*, utils::unix_date_formatting, CallbackQuery,
+    ChatLocation, ChatMemberUpdated, ChatPhoto, ChatType, ChosenInlineResult, Game,
+    InlineKeyboardMarkup, InlineQuery, Invoice, PassportData, PreCheckoutQuery, ShippingQuery,
+    Sticker, SuccessfulPayment, User,
 };
 
 /// The raw message, for most usages the [`Message`] object is easier to use

@@ -8,14 +8,10 @@ mod utils;
 #[allow(unused_extern_crates)]
 extern crate proc_macro;
 
-use quote::quote;
+use crate::structs::{CommandFunc, ListenerFunc};
 use proc_macro::TokenStream;
-use syn::{
-    parse_macro_input
-};
-use crate::structs::{
-    ListenerFunc, CommandFunc
-};
+use quote::quote;
+use syn::parse_macro_input;
 use utils::{add_suffix, PunctuatedNamedArgs};
 
 /// A function attribute macro for making event listeners easier.
@@ -25,9 +21,10 @@ use utils::{add_suffix, PunctuatedNamedArgs};
 #[proc_macro_attribute]
 pub fn prepare_listener(_attr: TokenStream, item: TokenStream) -> TokenStream {
     let listener = parse_macro_input!(item as ListenerFunc);
-    (quote!{
+    (quote! {
         #listener
-    }).into()
+    })
+    .into()
 }
 
 /// A function attribute macro for making commands.
@@ -62,9 +59,9 @@ pub fn command(attr: TokenStream, item: TokenStream) -> TokenStream {
 
     for arg in args.0 {
         match arg.name.as_str() {
-            "name" => telegram_command_name =  arg.value.clone(),
+            "name" => telegram_command_name = arg.value.clone(),
             "description" => description = arg.value.clone(),
-            _ => ()
+            _ => (),
         }
     }
 
@@ -76,7 +73,7 @@ pub fn command(attr: TokenStream, item: TokenStream) -> TokenStream {
     }
 
     let fun_name = command_fun.name.clone();
-    let command_name = add_suffix(&fun_name,"COMMAND");
+    let command_name = add_suffix(&fun_name, "COMMAND");
     let options_name = add_suffix(&fun_name, "COMMAND_OPTIONS");
 
     let command_cooked = command_fun.cooked.clone();
@@ -86,7 +83,7 @@ pub fn command(attr: TokenStream, item: TokenStream) -> TokenStream {
     let options_struct_path = quote!(telexide::framework::types::CommandOptions);
     let default_command_type_path = quote!(telexide::framework::types::CommandTypes::Default);
 
-    (quote!{
+    (quote! {
         #(#options_cooked)*
         pub static #options_name: #options_struct_path = #options_struct_path {
             name: #telegram_command_name,
@@ -100,5 +97,6 @@ pub fn command(attr: TokenStream, item: TokenStream) -> TokenStream {
         };
 
         #command_fun
-    }).into()
+    })
+    .into()
 }

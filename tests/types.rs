@@ -36,10 +36,7 @@ fn decode_message() -> serde_json::Result<()> {
 
     let m: Message = serde_json::from_str(t)?;
 
-    if let MessageContent::Document {
-        caption, ..
-    } = m.content.clone()
-    {
+    if let MessageContent::Document { caption, .. } = m.content.clone() {
         assert_eq!(caption, Some("just testing".to_owned()))
     } else {
         panic!("no document")

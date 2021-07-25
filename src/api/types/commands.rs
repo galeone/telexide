@@ -13,9 +13,7 @@ pub struct SetMyCommands {
 
 impl From<Vec<BotCommand>> for SetMyCommands {
     fn from(commands: Vec<BotCommand>) -> Self {
-        Self {
-            commands,
-        }
+        Self { commands }
     }
 }
 

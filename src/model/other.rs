@@ -1,11 +1,6 @@
 use super::{
-    utils::unix_date_formatting,
-    ForceReply,
-    InlineKeyboardMarkup,
-    Message,
-    ReplyKeyboardMarkup,
-    ReplyKeyboardRemove,
-    User,
+    utils::unix_date_formatting, ForceReply, InlineKeyboardMarkup, Message, ReplyKeyboardMarkup,
+    ReplyKeyboardRemove, User,
 };
 use crate::api::types::UpdateType;
 use chrono::{DateTime, Utc};

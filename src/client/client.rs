@@ -1,12 +1,6 @@
 use super::{
-    APIConnector,
-    ClientBuilder,
-    Context,
-    EventHandlerFunc,
-    RawEventHandlerFunc,
-    UpdatesStream,
-    Webhook,
-    WebhookOptions,
+    APIConnector, ClientBuilder, Context, EventHandlerFunc, RawEventHandlerFunc, UpdatesStream,
+    Webhook, WebhookOptions,
 };
 use crate::{
     api::{
@@ -154,7 +148,7 @@ impl Client {
             match poll {
                 Ok(update) => {
                     self.fire_handlers(update);
-                },
+                }
                 Err(err) => return Err(err),
             }
         }
@@ -192,7 +186,7 @@ impl Client {
             match u {
                 Ok(update) => {
                     self.fire_handlers(update);
-                },
+                }
                 Err(err) => return Err(err),
             }
         }

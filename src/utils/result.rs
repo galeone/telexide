@@ -40,23 +40,23 @@ impl TelegramError {
             TelegramError::NoToken => "No token provided to login to telegram".to_owned(),
             TelegramError::InvalidToken => {
                 "Invalid token provided for logging in to telegram".to_owned()
-            },
+            }
             TelegramError::MissingPermission => {
                 "Missing permission to execute action in chat".to_owned()
-            },
+            }
             TelegramError::NotFound => "The requested resource doesn't exist".to_owned(),
             TelegramError::ServerError => {
                 "The telegram server returned a 500 status code".to_owned()
-            },
+            }
             TelegramError::WebhookError => "An error occurred in the webhook handling".to_owned(),
             TelegramError::InvalidEndpoint => "The requested endpoint does not exist".to_owned(),
             TelegramError::InvalidCommandType => {
                 "This action cannot be done on this command type".to_owned()
-            },
+            }
             TelegramError::InvalidArgument(ref e) => format!("Invalid argument provided: {}", e),
             TelegramError::APIResponseError(ref e) => {
                 format!("the telegram api returned an error: {}", e)
-            },
+            }
             TelegramError::Unknown(ref e) => format!("unknown error occurred: {}", e),
         }
     }

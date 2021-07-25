@@ -4,14 +4,7 @@ use telexide::{
     framework::CommandResult,
     macros::{command, create_framework, prepare_listener},
     model::{
-        Chat,
-        Message,
-        MessageContent,
-        MessageEntity,
-        PrivateChat,
-        TextBlock,
-        Update,
-        UpdateContent,
+        Chat, Message, MessageContent, MessageEntity, PrivateChat, TextBlock, Update, UpdateContent,
     },
     Result,
 };

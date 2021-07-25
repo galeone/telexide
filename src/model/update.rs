@@ -1,14 +1,6 @@
 use super::{
-    raw::RawUpdate,
-    CallbackQuery,
-    ChatMemberUpdated,
-    ChosenInlineResult,
-    InlineQuery,
-    Message,
-    Poll,
-    PollAnswer,
-    PreCheckoutQuery,
-    ShippingQuery,
+    raw::RawUpdate, CallbackQuery, ChatMemberUpdated, ChosenInlineResult, InlineQuery, Message,
+    Poll, PollAnswer, PreCheckoutQuery, ShippingQuery,
 };
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
@@ -76,10 +68,7 @@ pub enum UpdateContent {
 impl From<RawUpdate> for Update {
     fn from(raw: RawUpdate) -> Update {
         let update_id = raw.update_id;
-        let make_update = |content: UpdateContent| Self {
-            update_id,
-            content,
-        };
+        let make_update = |content: UpdateContent| Self { update_id, content };
 
         macro_rules! set_content {
             ($data:expr, $kind:ident) => {
@@ -130,55 +119,55 @@ impl From<Update> for RawUpdate {
             UpdateContent::Message(c) => {
                 ret.message = Some(c.into());
                 ret
-            },
+            }
             UpdateContent::EditedMessage(c) => {
                 ret.edited_message = Some(c.into());
                 ret
-            },
+            }
             UpdateContent::ChannelPost(c) => {
                 ret.channel_post = Some(c.into());
                 ret
-            },
+            }
             UpdateContent::EditedChannelPost(c) => {
                 ret.edited_channel_post = Some(c.into());
                 ret
-            },
+            }
             UpdateContent::InlineQuery(c) => {
                 ret.inline_query = Some(c);
                 ret
-            },
+            }
             UpdateContent::ChosenInlineResult(c) => {
                 ret.chosen_inline_result = Some(c);
                 ret
-            },
+            }
             UpdateContent::CallbackQuery(c) => {
                 ret.callback_query = Some(c);
                 ret
-            },
+            }
             UpdateContent::ShippingQuery(c) => {
                 ret.shipping_query = Some(c);
                 ret
-            },
+            }
             UpdateContent::PreCheckoutQuery(c) => {
                 ret.pre_checkout_query = Some(c);
                 ret
-            },
+            }
             UpdateContent::Poll(c) => {
                 ret.poll = Some(c);
                 ret
-            },
+            }
             UpdateContent::PollAnswer(c) => {
                 ret.poll_answer = Some(c);
                 ret
-            },
+            }
             UpdateContent::MyChatMember(c) => {
                 ret.my_chat_member = Some(c);
                 ret
-            },
+            }
             UpdateContent::ChatMember(c) => {
                 ret.chat_member = Some(c);
                 ret
-            },
+            }
             UpdateContent::Unknown => ret,
         }
     }

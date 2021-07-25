@@ -39,10 +39,7 @@ impl Parse for NamedArgs {
         value = value.trim_start_matches('\"').to_owned();
         value = value.trim_end_matches('\"').to_owned();
 
-        Ok(Self {
-            name,
-            value,
-        })
+        Ok(Self { name, value })
     }
 }
 

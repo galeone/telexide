@@ -692,7 +692,7 @@ pub trait API: Sync {
                     "this endpoint only accepts files to be uploaded".to_owned(),
                 )
                 .into())
-            },
+            }
         }
 
         self.post_file(
@@ -959,7 +959,7 @@ pub trait API: Sync {
                         "tgs_sticker only accepts files, not urls/ids".to_owned(),
                     )
                     .into())
-                },
+                }
             }
         }
 
@@ -1003,7 +1003,7 @@ pub trait API: Sync {
                         "tgs_sticker only accepts files, not urls/ids.".to_owned(),
                     )
                     .into())
-                },
+                }
             }
         }
 

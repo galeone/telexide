@@ -1,4 +1,4 @@
-use crate::model::{InlineKeyboardMarkup, MessageEntity, ParseMode, LabeledPrice};
+use crate::model::{InlineKeyboardMarkup, LabeledPrice, MessageEntity, ParseMode};
 use serde::{Deserialize, Serialize};
 
 /// struct for holding data needed to call
@@ -723,7 +723,5 @@ pub struct InputInvoiceMessageContent {
     /// Pass True, if user's email address should be sent to provider
     pub send_email_to_provider: bool,
     /// Pass True, if the final price depends on the shipping method
-    pub is_flexible: bool
-
+    pub is_flexible: bool,
 }
-

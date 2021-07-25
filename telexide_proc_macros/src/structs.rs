@@ -1,8 +1,8 @@
-use proc_macro2::TokenStream as TokenStream2;
-use syn::parse::{Parse, ParseStream, Result};
-use syn::{Attribute, Ident, Stmt, Visibility, ReturnType, braced, FnArg, Token, Block, Type};
-use quote::{quote, ToTokens};
 use super::utils::ParenthesisedItems;
+use proc_macro2::TokenStream as TokenStream2;
+use quote::{quote, ToTokens};
+use syn::parse::{Parse, ParseStream, Result};
+use syn::{braced, Attribute, Block, FnArg, Ident, ReturnType, Stmt, Token, Type, Visibility};
 
 #[derive(Debug)]
 pub struct ListenerFunc {
@@ -32,11 +32,8 @@ impl Parse for ListenerFunc {
         let ParenthesisedItems(args) = input.parse::<ParenthesisedItems<FnArg>>()?;
 
         match input.parse::<ReturnType>()? {
-            ReturnType::Type(_, _) => {
-                return Err(input
-                    .error("expected a default return value"))
-            },
-            ReturnType::Default => ()
+            ReturnType::Type(_, _) => return Err(input.error("expected a default return value")),
+            ReturnType::Default => (),
         };
 
         let body_content;
@@ -107,11 +104,8 @@ impl Parse for CommandFunc {
         let ParenthesisedItems(args) = input.parse::<ParenthesisedItems<FnArg>>()?;
 
         let ret = match input.parse::<ReturnType>()? {
-            ReturnType::Type(_, t) => {
-                *t
-            },
-            ReturnType::Default => return Err(input
-                .error("expected a CommandResult return value"))
+            ReturnType::Type(_, t) => *t,
+            ReturnType::Default => return Err(input.error("expected a CommandResult return value")),
         };
 
         let body_content;

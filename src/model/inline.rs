@@ -4,7 +4,7 @@
 //! [inline feedback]: https://core.telegram.org/bots/inline#collecting-feedback
 //! [@Botfather]: https://t.me/botfather
 
-use super::{Location, User, ChatType};
+use super::{ChatType, Location, User};
 use serde::{Deserialize, Serialize};
 
 /// This object represents an incoming inline query.
