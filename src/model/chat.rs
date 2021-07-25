@@ -1,11 +1,7 @@
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 
-use super::{
-    raw::RawChat,
-    utils::unix_date_formatting,
-    User,
-};
+use super::{raw::RawChat, utils::unix_date_formatting, User};
 
 /// A private chat object, also known as a DM, between the bot and an user
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
@@ -401,16 +397,14 @@ pub struct CreatorMemberStatus {
 pub struct AdministratorMemberStatus {
     /// Information about the user
     pub user: User,
-    /// Custom title for this user
-    pub custom_title: Option<String>,
-    /// Owner and administrators only. True, if the user's presence in the chat
-    /// is hidden
-    #[serde(default)]
-    pub is_anonymous: bool,
     /// True, if the bot is allowed to edit administrator privileges of that
     /// user
     #[serde(default)]
     pub can_be_edited: bool,
+    /// Owner and administrators only. True, if the user's presence in the chat
+    /// is hidden
+    #[serde(default)]
+    pub is_anonymous: bool,
     /// True, if the administrator can access the chat event log, chat
     /// statistics, message statistics in channels, see channel members, see
     /// anonymous administrators in supergroups and ignore slow mode.
@@ -418,21 +412,40 @@ pub struct AdministratorMemberStatus {
     #[serde(default)]
     pub can_manage_chat: bool,
     /// True, if the administrator can post in the channel; channels only
+    /// If the administrator can delete messages of other users
     #[serde(default)]
-    pub can_send_media_messages: bool,
-    /// True, if the user is allowed to send polls
-    #[serde(default)]
-    pub can_send_polls: bool,
-    /// True, if the user is allowed to send animations, games, stickers and use
-    /// inline bots
-    #[serde(default)]
-    pub can_send_other_messages: bool,
-    /// True, if the user is allowed to add web page previews to their messages
-    #[serde(default)]
-    pub can_add_web_page_previews: bool,
+    pub can_delete_messages: bool,
     /// True, if the administrator can manage voice chats
     #[serde(default)]
     pub can_manage_voice_chats: bool,
+    /// True, if the administrator can restrict, ban or unban chat members
+    #[serde(default)]
+    pub can_restrict_members: bool,
+    /// True, if the administrator can add new administrators with a subset of their
+    /// own privileges or demote administrators that he has promoted, directly
+    /// or indirectly (promoted by administrators that were appointed by the user)
+    #[serde(default)]
+    pub can_promote_members: bool,
+    /// True, if the user is allowed to change the chat title, photo and other
+    /// settings
+    pub can_change_info: bool,
+    /// True, if the user is allowed to invite new users to the chat
+    #[serde(default)]
+    pub can_invite_users: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub can_post_messages: Option<bool>,
+    /// If the administrator can edit messages of other users and can pin
+    /// messages, channels only
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub can_edit_messages: Option<bool>,
+    /// If the administrator can add new administrators with a subset of his own
+    /// privileges or demote administrators that he has promoted, directly
+    /// or indirectly (promoted by administrators that were appointed by
+    /// him)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub can_pin_messages: Option<bool>,
+    /// Custom title for this user
+    pub custom_title: Option<String>,
 }
 
 /// Represents a [`ChatMember`] who is a normal member of the [`Chat`] without
@@ -570,4 +583,3 @@ pub enum ChatType {
     #[serde(rename = "sender")]
     Sender,
 }
-
