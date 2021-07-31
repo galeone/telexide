@@ -19,16 +19,19 @@ pub struct InlineKeyboardButton {
     /// Label text on the button
     pub text: String,
     /// HTTP or tg:// url to be opened when button is pressed
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub url: Option<String>,
     /// An HTTP URL used to automatically authorize the user.
     /// Can be used as a replacement for the [Telegram Login Widget][widget].
     ///
     /// [widget]: https://core.telegram.org/widgets/login
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub login_url: Option<LoginUrl>,
     /// Data to be sent in a [callback query] to the bot when button is pressed,
     /// 1-64 bytes
     ///
     /// [callback query]: ../model/struct.CallbackQuery.html
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub callback_data: Option<String>,
     /// If set, pressing the button will prompt the user to select one of their
     /// chats, open that chat and insert the bot‘s username and the
@@ -43,6 +46,7 @@ pub struct InlineKeyboardButton {
     ///
     /// [inline mode]: https://core.telegram.org/bots/inline
     /// [switch_pm]: ../api/trait.API.html#method.answer_callback_query
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub switch_inline_query: Option<String>,
     /// If set, pressing the button will insert the bot‘s username and the
     /// specified inline query in the current chat's input field. Can be
@@ -50,12 +54,14 @@ pub struct InlineKeyboardButton {
     ///
     /// This offers a quick way for the user to open your bot in inline mode in
     /// the same chat – good for selecting something from multiple options.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub switch_inline_query_current_chat: Option<String>,
     /// Description of the game that will be launched when the user presses the
     /// button.
     ///
     /// **NOTE:** This type of button must always be the first button in the
     /// first row.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub callback_game: Option<CallbackGame>,
     /// Specify True, to send a [Pay button].
     ///
@@ -174,12 +180,15 @@ pub struct KeyboardButton {
     pub text: String,
     /// If true, the user's phone number will be sent as a contact when the
     /// button is pressed. Available in private chats only
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub request_contact: Option<bool>,
     /// If true, the user's current location will be sent when the button is
     /// pressed. Available in private chats only
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub request_location: Option<bool>,
     /// If specified, the user will be asked to create a poll and send it to the
     /// bot when the button is pressed. Available in private chats only
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub request_poll: Option<KeyboardButtonPollType>,
 }
 
