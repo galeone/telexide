@@ -52,9 +52,9 @@ impl GetUpdates {
 
     pub fn add_allowed_updates(&mut self, allowed_update: UpdateType) -> &mut Self {
         if let Some(ref mut a) = self.allowed_updates {
-            a.push(allowed_update)
+            a.push(allowed_update);
         } else {
-            self.allowed_updates = Some(vec![allowed_update])
+            self.allowed_updates = Some(vec![allowed_update]);
         }
         self
     }

@@ -189,6 +189,6 @@ impl Serialize for Update {
     where
         S: Serializer,
     {
-        RawUpdate::from(self.to_owned()).serialize(serializer)
+        RawUpdate::from(self.clone()).serialize(serializer)
     }
 }

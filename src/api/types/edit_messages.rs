@@ -149,7 +149,7 @@ impl EditMessageMedia {
         Self {
             chat_id: Some(chat_id),
             message_id: Some(message_id),
-            media: new_media.to_owned(),
+            media: new_media.clone(),
             inline_message_id: None,
             reply_markup: None,
         }
@@ -159,7 +159,7 @@ impl EditMessageMedia {
         Self {
             chat_id: Some(message.chat.get_id()),
             message_id: Some(message.message_id),
-            media: new_media.to_owned(),
+            media: new_media.clone(),
             inline_message_id: None,
             reply_markup: None,
         }

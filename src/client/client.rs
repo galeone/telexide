@@ -86,7 +86,7 @@ pub struct Client {
 
 impl Client {
     /// Creates a Client object with default values and no framework
-    pub fn new<T: ToString>(token: T) -> Self {
+    pub fn new<T: ToString>(token: &T) -> Self {
         Self {
             api_client: Arc::new(Box::new(APIClient::new(None, token))),
             event_handlers: Vec::new(),
@@ -99,7 +99,7 @@ impl Client {
     }
 
     /// Creates a Client object with default values, but with a [`Framework`]
-    pub fn with_framework<T: ToString>(fr: Arc<Framework>, token: T) -> Self {
+    pub fn with_framework<T: ToString>(fr: Arc<Framework>, token: &T) -> Self {
         Self {
             api_client: Arc::new(Box::new(APIClient::new(None, token))),
             event_handlers: Vec::new(),
@@ -212,13 +212,17 @@ impl Client {
         for h in self.raw_event_handlers.clone() {
             let ctx = Context::new(self.api_client.clone(), self.data.clone());
             let u = update.clone();
-            tokio::spawn(async move { h(ctx, u.into()).await });
+            tokio::spawn(async move {
+                h(ctx, u.into()).await;
+            });
         }
 
         for h in self.event_handlers.clone() {
             let ctx = Context::new(self.api_client.clone(), self.data.clone());
             let u = update.clone();
-            tokio::spawn(async move { h(ctx, u).await });
+            tokio::spawn(async move {
+                h(ctx, u).await;
+            });
         }
 
         if self.framework.is_some() {

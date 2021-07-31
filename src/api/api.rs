@@ -687,7 +687,7 @@ pub trait API: Sync {
         let mut files = Vec::new();
         match &data.photo {
             InputFile::File(f) => files.push(f.clone()),
-            _ => {
+            InputFile::String(_) => {
                 return Err(TelegramError::InvalidArgument(
                     "this endpoint only accepts files to be uploaded".to_owned(),
                 )
@@ -922,7 +922,7 @@ pub trait API: Sync {
                 )
                 .await?
                 .into(),
-            _ => Err(TelegramError::InvalidArgument(
+            InputFile::String(_) => Err(TelegramError::InvalidArgument(
                 "upload_sticker_file only accepts files, not urls/ids".to_owned(),
             )
             .into()),
@@ -954,7 +954,7 @@ pub trait API: Sync {
         if data.tgs_sticker.is_some() {
             match data.tgs_sticker.as_ref().unwrap() {
                 InputFile::File(f) => files.push(f.clone()),
-                _ => {
+                InputFile::String(_) => {
                     return Err(TelegramError::InvalidArgument(
                         "tgs_sticker only accepts files, not urls/ids".to_owned(),
                     )
@@ -998,7 +998,7 @@ pub trait API: Sync {
         if data.tgs_sticker.is_some() {
             match data.tgs_sticker.as_ref().unwrap() {
                 InputFile::File(f) => files.push(f.clone()),
-                _ => {
+                InputFile::String(_) => {
                     return Err(TelegramError::InvalidArgument(
                         "tgs_sticker only accepts files, not urls/ids.".to_owned(),
                     )

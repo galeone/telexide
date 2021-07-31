@@ -19,7 +19,7 @@ impl TextBlock {
                 break;
             }
             if self.offset <= i {
-                res.push(point)
+                res.push(point);
             }
         }
 

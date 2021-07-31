@@ -694,7 +694,7 @@ impl Serialize for Message {
     where
         S: Serializer,
     {
-        RawMessage::from(self.to_owned()).serialize(serializer)
+        RawMessage::from(self.clone()).serialize(serializer)
     }
 }
 

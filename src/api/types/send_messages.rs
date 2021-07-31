@@ -62,7 +62,7 @@ impl SendMessage {
     }
 
     pub fn set_parse_mode(&mut self, mode: &ParseMode) -> &mut Self {
-        self.parse_mode = Some(mode.to_owned());
+        self.parse_mode = Some(mode.clone());
         self
     }
 
@@ -77,7 +77,7 @@ impl SendMessage {
     }
 
     pub fn set_reply_markup(&mut self, markup: &ReplyMarkup) -> &mut Self {
-        self.reply_markup = Some(markup.to_owned());
+        self.reply_markup = Some(markup.clone());
         self
     }
 

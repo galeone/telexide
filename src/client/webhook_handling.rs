@@ -47,7 +47,7 @@ async fn handle_update(
     let mut raw_body = req.into_body();
     let mut body: Vec<u8> = Vec::new();
     while let Some(chunk) = raw_body.data().await {
-        body.write_all(&chunk?)?
+        body.write_all(&chunk?)?;
     }
 
     let update: Update = serde_json::from_slice(&body)?;
@@ -73,7 +73,7 @@ async fn handle_req(
             if result.is_err() {
                 *response.status_mut() = StatusCode::INTERNAL_SERVER_ERROR;
             } else {
-                response = result.unwrap()
+                response = result.unwrap();
             }
         }
         _ => {

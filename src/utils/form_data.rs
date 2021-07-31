@@ -19,7 +19,7 @@ impl FormDataFile {
         Self {
             bytes: bytes.to_vec(),
             name: file_name
-                .splitn(1, '.')
+                .splitn(2, '.')
                 .collect::<Vec<&str>>()
                 .first()
                 .unwrap_or(&"new_file")
@@ -37,7 +37,7 @@ impl FormDataFile {
         Ok(Self {
             bytes,
             name: file_name
-                .splitn(1, '.')
+                .splitn(2, '.')
                 .collect::<Vec<&str>>()
                 .first()
                 .unwrap_or(&"new_file")
@@ -153,7 +153,7 @@ impl AsFormData for Value {
                     .trim_matches('"')
                     .as_bytes()
                     .to_vec(),
-            })
+            });
         }
 
         Ok(res)
