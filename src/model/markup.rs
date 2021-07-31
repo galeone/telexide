@@ -180,12 +180,10 @@ pub struct KeyboardButton {
     pub text: String,
     /// If true, the user's phone number will be sent as a contact when the
     /// button is pressed. Available in private chats only
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub request_contact: Option<bool>,
+    pub request_contact: bool,
     /// If true, the user's current location will be sent when the button is
     /// pressed. Available in private chats only
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub request_location: Option<bool>,
+    pub request_location: bool,
     /// If specified, the user will be asked to create a poll and send it to the
     /// bot when the button is pressed. Available in private chats only
     #[serde(skip_serializing_if = "Option::is_none")]
