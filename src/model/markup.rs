@@ -69,8 +69,8 @@ pub struct InlineKeyboardButton {
     /// first row.
     ///
     /// [Pay button]: https://core.telegram.org/bots/api#payments
-    #[serde(default)]
-    pub pay: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub pay: Option<bool>,
 }
 
 /// This object represents a custom keyboard with reply options
