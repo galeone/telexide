@@ -36,7 +36,7 @@ pub struct EditMessageText {
 }
 
 impl EditMessageText {
-    fn new(chat_id: i64, message_id: i64, new_text: &str) -> Self {
+    pub fn new(chat_id: i64, message_id: i64, new_text: &str) -> Self {
         Self {
             chat_id: Some(chat_id),
             message_id: Some(message_id),
@@ -49,7 +49,7 @@ impl EditMessageText {
         }
     }
 
-    fn from_message(message: &Message, new_text: &str) -> Self {
+    pub fn from_message(message: &Message, new_text: &str) -> Self {
         Self {
             chat_id: Some(message.chat.get_id()),
             message_id: Some(message.message_id),
@@ -96,7 +96,7 @@ pub struct EditMessageCaption {
 }
 
 impl EditMessageCaption {
-    fn new(chat_id: i64, message_id: i64, new_text: Option<&str>) -> Self {
+    pub fn new(chat_id: i64, message_id: i64, new_text: Option<&str>) -> Self {
         Self {
             chat_id: Some(chat_id),
             message_id: Some(message_id),
@@ -108,7 +108,7 @@ impl EditMessageCaption {
         }
     }
 
-    fn from_message(message: &Message, new_text: Option<&str>) -> Self {
+    pub fn from_message(message: &Message, new_text: Option<&str>) -> Self {
         Self {
             chat_id: Some(message.chat.get_id()),
             message_id: Some(message.message_id),
@@ -145,7 +145,7 @@ pub struct EditMessageMedia {
 }
 
 impl EditMessageMedia {
-    fn new(chat_id: i64, message_id: i64, new_media: &InputMedia) -> Self {
+    pub fn new(chat_id: i64, message_id: i64, new_media: &InputMedia) -> Self {
         Self {
             chat_id: Some(chat_id),
             message_id: Some(message_id),
@@ -155,7 +155,7 @@ impl EditMessageMedia {
         }
     }
 
-    fn from_message(message: &Message, new_media: &InputMedia) -> Self {
+    pub fn from_message(message: &Message, new_media: &InputMedia) -> Self {
         Self {
             chat_id: Some(message.chat.get_id()),
             message_id: Some(message.message_id),
@@ -188,7 +188,7 @@ pub struct EditMessageReplyMarkup {
 }
 
 impl EditMessageReplyMarkup {
-    fn new(chat_id: i64, message_id: i64, new_markup: Option<&InlineKeyboardMarkup>) -> Self {
+    pub fn new(chat_id: i64, message_id: i64, new_markup: Option<&InlineKeyboardMarkup>) -> Self {
         Self {
             chat_id: Some(chat_id),
             message_id: Some(message_id),
@@ -197,7 +197,7 @@ impl EditMessageReplyMarkup {
         }
     }
 
-    fn from_message(message: &Message, new_markup: Option<&InlineKeyboardMarkup>) -> Self {
+    pub fn from_message(message: &Message, new_markup: Option<&InlineKeyboardMarkup>) -> Self {
         Self {
             chat_id: Some(message.chat.get_id()),
             message_id: Some(message.message_id),
@@ -224,7 +224,7 @@ pub struct StopPoll {
 }
 
 impl StopPoll {
-    fn new(chat_id: i64, message_id: i64) -> Self {
+    pub fn new(chat_id: i64, message_id: i64) -> Self {
         Self {
             chat_id,
             message_id,
@@ -232,7 +232,7 @@ impl StopPoll {
         }
     }
 
-    fn from_message(message: &Message) -> Self {
+    pub fn from_message(message: &Message) -> Self {
         Self {
             chat_id: message.chat.get_id(),
             message_id: message.message_id,
@@ -255,14 +255,14 @@ pub struct DeleteMessage {
 }
 
 impl DeleteMessage {
-    fn new(chat_id: i64, message_id: i64) -> Self {
+    pub fn new(chat_id: i64, message_id: i64) -> Self {
         Self {
             chat_id,
             message_id,
         }
     }
 
-    fn from_message(message: &Message) -> Self {
+    pub fn from_message(message: &Message) -> Self {
         Self {
             chat_id: message.chat.get_id(),
             message_id: message.message_id,
