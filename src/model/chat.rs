@@ -30,6 +30,8 @@ pub struct GroupChat {
     pub id: i64,
     /// Title
     pub title: String,
+    /// Username if available
+    pub username: Option<String>,
     /// Chat photo. Returned only in [`get_chat`].
     ///
     /// [`get_chat`]: ../../api/trait.API.html#method.get_chat
@@ -252,6 +254,7 @@ impl From<RawChat> for Chat {
             ChatType::Group => Chat::Group(GroupChat {
                 id: raw.id,
                 title: raw.title.unwrap_or_default(),
+                username: raw.username,
                 photo: raw.photo,
                 description: raw.description,
                 pinned_message: raw.pinned_message.map(|m| Box::new((*m).into())),
