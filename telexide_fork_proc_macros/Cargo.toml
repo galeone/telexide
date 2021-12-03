@@ -1,17 +1,20 @@
 [package]
 name = "telexide_fork_proc_macros"
-version = "0.1.0"
-authors = ["Callidus <callidusumbra@gmail.com>"]
+version = "0.1.1"
+authors = [
+    "Callidus <callidusumbra@gmail.com>", # original author, main contributor
+    "Paolo Galeone <nessuno@nerdz.eu>" # This fork
+]
 edition = "2018"
-description = "macros for subscribing to events in telexide"
+description = "(fork) macros for subscribing to events in telexide"
 license = "MIT"
-repository = "https://github.com/callieve/telexide"
-homepage = "https://github.com/callieve/telexide"
+repository = "https://github.com/galeone/telexide"
+homepage = "https://github.com/galeone/telexide"
 
 [lib]
 proc-macro = true
 
 [dependencies]
-quote = "^1.0"
-syn = { version = "^1.0", features = ["full", "derive", "extra-traits"] }
-proc-macro2 = "^1.0"
+quote = "1.0.10"
+syn = { version = "1.0.82", features = ["full", "derive", "extra-traits"] }
+proc-macro2 = "1.0.32"
