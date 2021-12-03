@@ -1,6 +1,6 @@
 use parking_lot::RwLock;
 use std::{collections::HashMap, env, sync::Arc};
-use telexide::{
+use telexide_fork::{
     api::types::{SendMessage, SendPhoto},
     model::{MessageContent, UpdateContent},
     prelude::*,
@@ -89,7 +89,7 @@ async fn handle_next(context: Context, update: Update) {
 }
 
 #[tokio::main]
-async fn main() -> telexide::Result<()> {
+async fn main() -> telexide_fork::Result<()> {
     let token = env::var("BOT_TOKEN").expect("no token environment variable set");
     let bot_name = env::var("BOT_NAME").expect("no bot name env variable set");
 

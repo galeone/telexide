@@ -1,4 +1,4 @@
-use telexide::model::{Chat, Message, MessageContent, User};
+use telexide_fork::model::{Chat, Message, MessageContent, User};
 
 #[test]
 fn decode_user() -> serde_json::Result<()> {

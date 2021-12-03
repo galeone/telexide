@@ -81,7 +81,7 @@ pub use utils::result::{Error, Result};
 pub mod prelude {
     //! A default set of exports which can be helpful to use.
     //!
-    //! note that [`TelexideError`] is a re-export of [`telexide::Error`] under
+    //! note that [`TelexideError`] is a re-export of [`telexide_fork::Error`] under
     //! a different name to remove likely ambiguity with other crate error
     //! enums.
     //!
@@ -90,10 +90,10 @@ pub mod prelude {
     //! Import all of the exports:
     //!
     //! ```rust
-    //! use telexide::prelude::*;
+    //! use telexide_fork::prelude::*;
     //! ```
     //!
-    //! [`telexide::Error`]: ../enum.Error.html
+    //! [`telexide_fork::Error`]: ../enum.Error.html
     //! [`TelexideError`]: ../enum.Error.html
 
     pub use super::{

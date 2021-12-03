@@ -5,7 +5,7 @@ authors = ["my name <my@email.address>"]
 edition = "2018"
 
 [dependencies]
-telexide = { path = "../../" }
+telexide_fork = { path = "../../" }
 tokio = { version = "1", features = ["full"] }
 typemap = "0.3"
 parking_lot = "0.11"

@@ -33,7 +33,7 @@ use typemap::ShareMap;
 ///
 /// # Examples
 /// ```rust,no_run
-/// use telexide::prelude::*;
+/// use telexide_fork::prelude::*;
 ///
 /// #[prepare_listener]
 /// async fn event_listener(ctx: Context, update: Update) {
@@ -41,9 +41,9 @@ use typemap::ShareMap;
 /// }
 ///
 /// #[tokio::main]
-/// async fn main() -> telexide::Result<()> {
-///     # let token = "test token";
-///     let mut client = Client::new(token);
+/// async fn main() -> telexide_fork::Result<()> {
+///     let token = String::from("test token");
+///     let mut client = Client::new(&token);
 ///     client.subscribe_handler_func(event_listener);
 ///
 ///     client.start().await

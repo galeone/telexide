@@ -1,6 +1,6 @@
 use hyper;
 use std::sync::atomic::{AtomicUsize, Ordering};
-use telexide::{
+use telexide_fork::{
     client::{Webhook, WebhookOptions},
     model::{Update, UpdateContent},
     Result,

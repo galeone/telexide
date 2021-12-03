@@ -1,5 +1,5 @@
 use std::sync::atomic::{AtomicUsize, Ordering};
-use telexide::{
+use telexide_fork::{
     client::{ClientBuilder, Context},
     framework::CommandResult,
     macros::{command, create_framework, prepare_listener},

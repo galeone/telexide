@@ -32,7 +32,7 @@ A basic ping-pong bot can be written like:
 
 ```rust
 use std::env;
-use telexide::{api::types::SendMessage, prelude::*};
+use telexide_fork::{api::types::SendMessage, prelude::*};
 
 #[command(description = "just a ping-pong command")]
 async fn ping(context: Context, message: Message) -> CommandResult {
@@ -44,7 +44,7 @@ async fn ping(context: Context, message: Message) -> CommandResult {
 }
 
 #[tokio::main]
-async fn main() -> telexide::Result<()> {
+async fn main() -> telexide_fork::Result<()> {
     let token = env::var("BOT_TOKEN").expect("no token environment variable set");
 
     ClientBuilder::with_framework(

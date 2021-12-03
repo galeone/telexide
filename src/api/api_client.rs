@@ -15,15 +15,15 @@ static TELEGRAM_API: &str = "https://api.telegram.org/bot";
 ///
 /// Using the default `APIClient` is as easy as:
 /// ```no_run
-/// use telexide::api::{APIClient, API, types::SendMessage};
+/// use telexide_fork::api::{APIClient, API, types::SendMessage};
 ///
 /// # #[tokio::main]
 /// # async fn main() {
-///     # let token = "test token";
+///     let token = String::from("test token");
 ///     # let chat_id = 3;
 ///     let message = SendMessage::new(chat_id, "hi!");
 ///
-///     let client = APIClient::new_default(token);
+///     let client = APIClient::new_default(&token);
 ///     client.send_message(message).await;
 /// # }
 /// ```

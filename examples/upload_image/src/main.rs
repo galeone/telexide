@@ -1,5 +1,5 @@
 use std::env;
-use telexide::{api::types::SendPhoto, prelude::*};
+use telexide_fork::{api::types::SendPhoto, prelude::*};
 
 #[command(description = "returns a gorgeous image of space!", name = "spaceimage")]
 async fn space_image(context: Context, message: Message) -> CommandResult {
@@ -17,7 +17,7 @@ async fn space_image(context: Context, message: Message) -> CommandResult {
 }
 
 #[tokio::main]
-async fn main() -> telexide::Result<()> {
+async fn main() -> telexide_fork::Result<()> {
     env_logger::init();
 
     let token = env::var("BOT_TOKEN").expect("no token environment variable set");
