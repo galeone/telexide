@@ -1,5 +1,5 @@
 [package]
-name = "telexide_proc_macros"
+name = "telexide_fork_proc_macros"
 version = "0.1.0"
 authors = ["Callidus <callidusumbra@gmail.com>"]
 edition = "2018"
