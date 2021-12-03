@@ -15,7 +15,7 @@ edition = "2018"
 
 [dependencies.telexide_fork_proc_macros]
 path = "./telexide_fork_proc_macros"
-version = "0.1.0"
+version = "0.1.1"
 
 [dependencies]
 serde = { version = "1.0.130", features = ["derive"] }
