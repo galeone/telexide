@@ -1,6 +1,6 @@
 [package]
 name = "telexide-fork"
-version = "0.2.1"
+version = "0.2.2"
 description = "(working) Fork of Telexide: An async Rust library for the telegram bot API"
 repository = "https://github.com/galeone/telexide"
 homepage = "https://github.com/galeone/telexide"
