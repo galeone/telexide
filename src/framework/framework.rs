@@ -27,7 +27,7 @@ impl Framework {
             for entity in entities {
                 if let MessageEntity::BotCommand(ref t) = entity {
                     let t = t.get_text(content);
-                    return t == format!("/{}", name)
+                    return t == format!("/{name}")
                         || t == format!("/{}@{}", name, &self.bot_name);
                 }
             }

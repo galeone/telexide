@@ -55,6 +55,9 @@ pub enum MessageEntity {
     /// Inline custom emoji stickers
     #[serde(rename = "custom_emoji")]
     CustomEmoji(InlineCustomEmoji),
+    /// A spoiler
+    #[serde(rename = "spoiler")]
+    Spoiler(TextBlock),
 }
 
 /// A monowidth code block

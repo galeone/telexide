@@ -1,4 +1,4 @@
-use hyper;
+
 use std::sync::atomic::{AtomicUsize, Ordering};
 use telexide_fork::{
     client::{Webhook, WebhookOptions},
