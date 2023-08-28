@@ -85,9 +85,9 @@ pub enum InputFile {
 }
 
 impl InputFile {
-    pub fn new_file(mut file: &mut File, file_name: &str) -> Result<Self> {
+    pub fn new_file(file: &mut File, file_name: &str) -> Result<Self> {
         Ok(Self::File(FormDataFile::new_from_file(
-            &mut file, file_name,
+            file, file_name,
         )?))
     }
 

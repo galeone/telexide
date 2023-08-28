@@ -284,7 +284,7 @@ impl From<RawMessage> for Message {
     fn from(raw: RawMessage) -> Message {
         let message_id = raw.message_id;
         let from = raw.from;
-        let sender_chat = raw.sender_chat.map(|c| c.into());
+        let sender_chat = raw.sender_chat.map(std::convert::Into::into);
         let date = raw.date;
         let chat = raw.chat.into();
         let reply_to_message = raw.reply_to_message.map(|r| Box::new((*r).into()));
@@ -298,7 +298,7 @@ impl From<RawMessage> for Message {
         let forward_data = if let Some(d) = raw.forward_date {
             Some(ForwardData {
                 from: raw.forward_from,
-                from_chat: raw.forward_from_chat.map(|c| c.into()),
+                from_chat: raw.forward_from_chat.map(std::convert::Into::into),
                 from_message_id: raw.forward_from_message_id,
                 signature: raw.forward_signature,
                 sender_name: raw.forward_sender_name,
@@ -427,7 +427,7 @@ impl From<Message> for RawMessage {
         let mut ret = Self {
             message_id: message.message_id,
             from: message.from,
-            sender_chat: message.sender_chat.map(|c| c.into()),
+            sender_chat: message.sender_chat.map(std::convert::Into::into),
             date: message.date,
             chat: message.chat.into(),
             reply_to_message: message.reply_to_message.map(|r| Box::new((*r).into())),
@@ -492,7 +492,7 @@ impl From<Message> for RawMessage {
             ret.forward_signature = d.signature;
             ret.forward_from_message_id = d.from_message_id;
             ret.forward_from = d.from;
-            ret.forward_from_chat = d.from_chat.map(|c| c.into());
+            ret.forward_from_chat = d.from_chat.map(std::convert::Into::into);
         }
 
         match message.content {

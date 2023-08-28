@@ -166,7 +166,7 @@ impl API for APIClient {
         let req_builder = Request::post(self.parse_endpoint(&endpoint))
             .header(
                 "content-type",
-                format!("multipart/form-data; boundary={}", BOUNDARY),
+                format!("multipart/form-data; boundary={BOUNDARY}"),
             )
             .header("accept", "application/json");
 
