@@ -12,7 +12,7 @@ pub fn deserialize<'de, D>(deserializer: D) -> Result<DateTime<Utc>, D::Error>
 where
     D: Deserializer<'de>,
 {
-    Ok(Utc.timestamp(i64::deserialize(deserializer)?, 0))
+    Ok(Utc.timestamp_opt(i64::deserialize(deserializer)?, 0).unwrap())
 }
 
 pub mod optional {
@@ -32,6 +32,6 @@ pub mod optional {
     where
         D: Deserializer<'de>,
     {
-        Ok(Some(Utc.timestamp(i64::deserialize(deserializer)?, 0)))
+        Ok(Some(Utc.timestamp_opt(i64::deserialize(deserializer)?, 0).unwrap()))
     }
 }
