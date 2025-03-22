@@ -58,6 +58,9 @@ pub enum MessageEntity {
     /// A spoiler
     #[serde(rename = "spoiler")]
     Spoiler(TextBlock),
+    /// Blockquote
+    #[serde(rename = "blockquote")]
+    Blockquote(TextBlock),
 }
 
 /// A monowidth code block
