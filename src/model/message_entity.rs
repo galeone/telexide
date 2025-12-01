@@ -61,6 +61,9 @@ pub enum MessageEntity {
     /// Blockquote
     #[serde(rename = "blockquote")]
     Blockquote(TextBlock),
+    /// Expandable Blockquote
+    #[serde(rename = "expandable_blockquote")]
+    ExpandableBlockquote(TextBlock),
 }
 
 /// A monowidth code block
